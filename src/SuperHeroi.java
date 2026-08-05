@@ -6,25 +6,21 @@ public class SuperHeroi extends superAbstract {
     private boolean identidadeSecreta;
     private List<String> habilidades = new ArrayList<>();
 
-
-    public void getIdentidade(){
-        if(identidadeSecreta){
-            System.out.println("??? (identidade protegida)");
-        }
-        else{
-            System.out.println(getNome());
+    public String getIdentidade() {
+        if (identidadeSecreta) {
+            return "??? (identidade protegida)";
+        } else {
+            return getNome();
         }
     }
-    public void revelerarIdentidade(){
-        System.out.println(getNome());
+
+    public String revelarIdentidade() {
+        return getNome();
     }
 
-
-    public SuperHeroi(String nome, Sexo sexo, int idade, double altura, boolean identidadeSecreta){
-        this.setNome(nome);
-        this.setSexo(sexo);
+    public SuperHeroi(String nome, Sexo sexo, int idade, double altura, boolean identidadeSecreta) {
+        super(nome, sexo, altura);
         this.idade = idade;
-        this.setAltura(altura);
         this.identidadeSecreta = identidadeSecreta;
     }
 
@@ -38,10 +34,9 @@ public class SuperHeroi extends superAbstract {
 
     @Override
     public String apresentar() {
-        String texto = "";
-        texto += getNome() + " - " + getSexo() + " - " + getAltura() + "\nHabilidades:";
-        for (String x: habilidades) {
-            texto += "\n" +"-" + x;
+        String texto = getNome() + " - " + getSexo() + " - " + getAltura() + "\nHabilidades:";
+        for (String x : habilidades) {
+            texto += "\n-" + x;
         }
         return texto;
     }
