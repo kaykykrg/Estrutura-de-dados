@@ -1,7 +1,7 @@
 public abstract class superAbstract{
     private Sexo sexo;
     private String nome;
-    private int altura;
+    private double altura;
 
     public abstract String apresentar();
 
@@ -21,11 +21,11 @@ public abstract class superAbstract{
         this.sexo = sexo;
     }
 
-    public int getAltura() {
+    public double getAltura() {
         return altura;
     }
 
-    public void setAltura(int altura) {
-        this.altura = altura;
+    public void setAltura(double altura) {
+            this.altura = altura;
     }
 }

@@ -1,13 +1,26 @@
+import java.util.Scanner;
+
 public class SuperHeroi extends superAbstract {
     private int idade;
     private boolean identidadeSecreta;
-    private String[] habilidades;
+    private String[] habilidades = {"fogo", "agua"};
 
 
-    public SuperHeroi(String nome,Sexo sexo,int idade, int altura, boolean identidadeSecreta){
-        this.setNome(nome);
+    public SuperHeroi(String nome,Sexo sexo,int idade, double altura, boolean identidadeSecreta){
+        try {
+
+            Scanner scanner = new Scanner(System.in);
+            nome = scanner.nextLine();
+            altura = scanner.nextDouble();
+            this.setNome(nome);
+            this.setAltura(altura);
+            if(nome.isEmpty() || altura < 0.5 || altura > 3){
+                throw new IllegalArgumentException("caralho: ");
+            }
+        } catch (IllegalArgumentException e){
+            IO.println(e + "nome ou altura invalidos!");
+        }
         this.setSexo(sexo);
-        this.setAltura(altura);
         this.identidadeSecreta = identidadeSecreta;
     }
 
@@ -22,9 +35,9 @@ public class SuperHeroi extends superAbstract {
     @Override
     public String apresentar() {
         String texto = "";
-        texto += getNome() + " - " + getSexo() + " - " + getAltura();
+        texto += getNome() + " - " + getSexo() + " - " + getAltura() + "\nHabilidades:";
         for (int i = 0; i < habilidades.length; i++) {
-            texto += habilidades[i];
+            texto += "\n" +"-" + habilidades[i];
         }
         return texto;
     }
