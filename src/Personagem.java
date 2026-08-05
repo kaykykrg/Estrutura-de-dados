@@ -1,9 +1,10 @@
-public abstract class superAbstract {
+public abstract class Personagem {
     private Sexo sexo;
     private String nome;
+    private int idade;
     private double altura;
 
-    public superAbstract(String nome, Sexo sexo, double altura) {
+    public Personagem(String nome, Sexo sexo, int idade, double altura) {
         if (nome == null || nome.isEmpty()) {
             throw new IllegalArgumentException("Nome não pode ser vazio");
         }
@@ -12,6 +13,7 @@ public abstract class superAbstract {
         }
         this.nome = nome;
         this.sexo = sexo;
+        this.idade = idade;
         this.altura = altura;
     }
 
@@ -22,6 +24,9 @@ public abstract class superAbstract {
     }
     public Sexo getSexo() {
         return sexo;
+    }
+    public int getIdade() {
+        return idade;
     }
     public double getAltura() {
         return altura;
