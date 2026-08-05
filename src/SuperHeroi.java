@@ -1,43 +1,47 @@
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SuperHeroi extends superAbstract {
     private int idade;
     private boolean identidadeSecreta;
-    private String[] habilidades = {"fogo", "agua"};
+    private List<String> habilidades = new ArrayList<>();
 
 
-    public SuperHeroi(String nome,Sexo sexo,int idade, double altura, boolean identidadeSecreta){
-        try {
-
-            Scanner scanner = new Scanner(System.in);
-            nome = scanner.nextLine();
-            altura = scanner.nextDouble();
-            this.setNome(nome);
-            this.setAltura(altura);
-            if(nome.isEmpty() || altura < 0.5 || altura > 3){
-                throw new IllegalArgumentException("caralho: ");
-            }
-        } catch (IllegalArgumentException e){
-            IO.println(e + "nome ou altura invalidos!");
+    public void getIdentidade(){
+        if(identidadeSecreta){
+            System.out.println("??? (identidade protegida)");
         }
+        else{
+            System.out.println(getNome());
+        }
+    }
+    public void revelerarIdentidade(){
+        System.out.println(getNome());
+    }
+
+
+    public SuperHeroi(String nome, Sexo sexo, int idade, double altura, boolean identidadeSecreta){
+        this.setNome(nome);
         this.setSexo(sexo);
+        this.idade = idade;
+        this.setAltura(altura);
         this.identidadeSecreta = identidadeSecreta;
     }
 
-    public String[] getHabilidades() {
-        return habilidades;
+    public List<String> getHabilidades() {
+        return new ArrayList<>(this.habilidades);
     }
 
-    public void setHabilidades(String[] habilidades) {
-        this.habilidades = habilidades;
+    public void setHabilidades(String habilidades) {
+        this.habilidades.add(habilidades);
     }
 
     @Override
     public String apresentar() {
         String texto = "";
         texto += getNome() + " - " + getSexo() + " - " + getAltura() + "\nHabilidades:";
-        for (int i = 0; i < habilidades.length; i++) {
-            texto += "\n" +"-" + habilidades[i];
+        for (String x: habilidades) {
+            texto += "\n" +"-" + x;
         }
         return texto;
     }

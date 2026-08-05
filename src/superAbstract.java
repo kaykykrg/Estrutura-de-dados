@@ -10,6 +10,10 @@ public abstract class superAbstract{
     }
 
     public void setNome(String nome) {
+        if (nome.isEmpty()) {
+            throw new IllegalArgumentException("Nome não pode ser vazio");
+        }
+
         this.nome = nome;
     }
 
@@ -26,6 +30,11 @@ public abstract class superAbstract{
     }
 
     public void setAltura(double altura) {
-            this.altura = altura;
+        if (altura < 0.5 || altura> 3) {
+            throw new IllegalArgumentException("Nome não pode ser vazio");
+        }
+
+        this.altura = altura;
     }
 }
+
